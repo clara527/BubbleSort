@@ -22,7 +22,7 @@ public class BubbleSort {
                 writer.write(number + "\n");
             }
         } catch (IOException e) {
-            System.out.println("Error writing to file.");
+            System.out.println("There is an error in writing to the file");
         }
     }
 
@@ -60,15 +60,15 @@ public class BubbleSort {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose an option:");
-        System.out.println("1. Generate a random array and store it in a file.");
-        System.out.println("2. Read an existing file, sort it, and store the sorted array in another file.");
+        System.out.println("#1 Generate a random array and store it in a file.");
+        System.out.println("#2 Read an existing file then sort it and then store the sorted array in a new file");
         int option = scanner.nextInt();
 
         if (option == 1) {
             System.out.print("Enter the length of the array: ");
             int arrayLength = scanner.nextInt();
             System.out.print("Enter the filename to save the array: ");
-            scanner.nextLine(); // consume the newline character
+            scanner.nextLine();
             String filename = scanner.nextLine();
 
             // Generate random array and print it
@@ -82,21 +82,19 @@ public class BubbleSort {
             System.out.println("Array has been saved to " + filename);
 
         } else if (option == 2) {
-            System.out.print("Enter the filename to read the array from: ");
+            System.out.print("Enter the name of the file you made that you want to read the array from: ");
             scanner.nextLine(); // consume the newline character
             String filename = scanner.nextLine();
-            System.out.print("Enter the filename to save the sorted array: ");
+            System.out.print("Enter the name of the file to save array that has been sorted");
             String outputFilename = scanner.nextLine();
-
-            // Read array from file
+            
             int[] numbersFromFile = readArrayFromFile(filename);
             System.out.println("Original array from file:");
             for (int number : numbersFromFile) {
                 System.out.print(number + " ");
             }
             System.out.println();
-
-            // Sort the array
+            
             bubbleSort(numbersFromFile);
             System.out.println("Sorted array:");
             for (int number : numbersFromFile) {
